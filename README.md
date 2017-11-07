@@ -25,3 +25,5 @@ Once the _param_Ross.m_ file is modified and run, you can then run the Simulink 
 * function blocks: This have the connection information for the network. The network is connected as shown in this figure
 
 
+## Plotting the information
+Running the _graph.m_ file lets you plot the information in a clear way. You'll get the States of all the systems in one Figure and the States on the Rossler System (which are also the coupling strenght) in another figure with 5 subplots.
