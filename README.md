@@ -1,5 +1,7 @@
 # simulation-chaotic-couplings-linear
-This is a Simulink Simulation for a Complex Network of linear Systems connected vía Chaotic Couplings.
+This is a Simulink Simulation for a Complex Network of linear Systems connected vía Chaotic Couplings. This Systems are connected as shown below:
+
+![network structure](https://user-images.githubusercontent.com/366479/32516730-f4bc212a-c3c9-11e7-849f-08a269c32dd2.PNG)
 
 
 ## Preparation
@@ -15,11 +17,11 @@ This generalized Rossler Sysyem is proposed by Meyer et al in the paper _Hyperch
 
 Once the _param_Ross.m_ file is modified and run, you can then run the Simulink Simulation.
 
-*Notable things you'll find:*
+**Notable things you'll find**:
 
-*Connection Timer*: A step block that lets you modify the connection time for the whole network.
-*Subsystems named Linear#*: This are simple harmonic oscillators with different initial conditions.
-*RosslerR5*: The Generalized Rossler System in R^5.
-*function blocks*: This have the connection information for the network. The network is connected as shown in this figure
+* Connection Timer: A step block that lets you modify the connection time for the whole network.
+* Subsystems named Linear#: This are simple harmonic oscillators with different initial conditions.
+* RosslerR5: The Generalized Rossler System in R^5.
+* function blocks: This have the connection information for the network. The network is connected as shown in this figure
 
 
