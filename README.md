@@ -1,29 +1,61 @@
-# simulation-chaotic-couplings-linear
-This is a Simulink Simulation for a Complex Network of linear Systems connected vía Chaotic Couplings. This Systems are connected as shown below:
+# Simulation of Chaotic Couplings in Linear Systems
 
-![network structure](https://user-images.githubusercontent.com/366479/32516730-f4bc212a-c3c9-11e7-849f-08a269c32dd2.PNG)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Matlab](https://img.shields.io/badge/Matlab-Simulink-orange)](https://www.mathworks.com/products/simulink.html)
 
+This project simulates a complex network of linear systems connected via chaotic couplings derived from a Generalized Rossler System in $R^5$.
 
-## Preparation
-In order to get the simulation going you have to modify the parameters in the _param_Ross.m_ file. 
+![Network Structure](https://user-images.githubusercontent.com/366479/32516730-f4bc212a-c3c9-11e7-849f-08a269c32dd2.PNG)
 
-The file is divided in two sets of parameters; the first one lets you vary the parameters in the generalized Rossler System present in the Simulink File inside the subsystem "RosslerR5".
+## Overview
 
-The second set of parameters lets you set a Coupling Constant for the network (_K_), an offset for the Rössler System's states (_ofs_) and lets you change the amplitude of the states signal for this system (_amp_). The proposed parameters are _K=1_, _ofs=1_ and _amp=0.2_.
+The simulation consists of:
+1.  **Generalized Rossler System**: A hyperchaotic system in 5 dimensions.
+2.  **Linear Oscillators**: 6 harmonic oscillators with different initial conditions.
+3.  **Chaotic Coupling**: The linear systems are coupled using signals from the Rossler system, creating complex dynamics.
 
-This generalized Rossler Sysyem is proposed by Meyer et al in the paper _Hyperchaos in the generalized Rössler system_, published in 1997.
+## Python Simulation (New)
 
-## Simulink Simulation
+A Python implementation is now available, replicating the Simulink model using `scipy.integrate`.
 
-Once the _param_Ross.m_ file is modified and run, you can then run the Simulink Simulation.
+### Prerequisites
+Install the required packages:
+```bash
+pip install -r requirements.txt
+```
 
-**Notable things you'll find**:
+### Running the Simulation
+Execute the simulation script:
+```bash
+python3 python_simulation.py
+```
+This will solve the differential equations and generate two plots:
+-   `rossler_states.png`: The chaotic states of the Rossler system.
+-   `linear_systems_states.png`: The states of the 6 linear oscillators.
 
-* Connection Timer: A step block that lets you modify the connection time for the whole network.
-* Subsystems named Linear#: This are simple harmonic oscillators with different initial conditions.
-* RosslerR5: The Generalized Rossler System in R^5.
-* function blocks: This have the connection information for the network. The network is connected as shown in this figure
+## MATLAB / Simulink Simulation
 
+### Preparation
+Modify parameters in the `param_Ross.m` file.
+-   **Rossler Parameters**: Control the chaotic system dynamics.
+-   **Network Parameters**:
+    -   `K`: Coupling Constant.
+    -   `ofs`: Offset for chaotic signals.
+    -   `amp`: Amplitude of the chaotic signals.
+    -   Default: $K=1, ext{ofs}=1, ext{amp}=0.2$.
 
-## Plotting the information
-Running the _graph.m_ file lets you plot the information in a clear way. You'll get the States of all the systems in one Figure and the States on the Rossler System (which are also the coupling strenght) in another figure with 5 subplots.
+### Running
+1.  Run `param_Ross.m` to load parameters into the workspace.
+2.  Open and run `red6Rossler.mdl` in Simulink.
+3.  Run `graph.m` to plot the results.
+
+### Notable Components in Simulink
+-   **Connection Timer**: A step block enabling coupling after a set time.
+-   **Linear# Subsystems**: Harmonic oscillators.
+-   **RosslerR5**: The generalized Rossler system.
+-   **Fcn Blocks**: Define the coupling logic based on the network structure.
+
+## Reference
+The Generalized Rossler System is based on:
+_Meyer et al., "Hyperchaos in the generalized Rössler system", 1997._
