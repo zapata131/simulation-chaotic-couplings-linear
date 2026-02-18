@@ -259,24 +259,27 @@ def plot_results(sol):
     
     plt.figure(figsize=(10, 12))
     state_names = ['x1', 'x2', 'x3', 'x4', 'x5']
+    colors_ross = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'] # Defined colors
     for i in range(5):
         plt.subplot(5, 1, i+1)
-        plt.plot(t, y[i])
+        plt.plot(t, y[i], color=colors_ross[i])
         plt.ylabel(f"Rossler {state_names[i]}")
         plt.grid(True)
     plt.xlabel("Time")
     plt.suptitle("Rossler R5 States (Coupling Signals)")
     plt.tight_layout()
-    plt.savefig('rossler_states.png')
+    plt.savefig('py_rossler_states.png')
     
     # Figure 2: Linear System States
     # Plot x1 of all 6 systems
     plt.figure(figsize=(10, 8))
     
+    colors_linear = plt.cm.viridis(np.linspace(0, 1, 6)) # Use viridis colormap for 6 systems
+    
     plt.subplot(2, 1, 1)
     for i in range(6):
         idx = 5 + 2*i # Index of x1 for system i
-        plt.plot(t, y[idx], label=f"Linear {i+1}")
+        plt.plot(t, y[idx], label=f"Linear {i+1}", color=colors_linear[i])
     plt.title("First State (x1) of Linear Systems")
     plt.ylabel("x1")
     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
@@ -285,15 +288,15 @@ def plot_results(sol):
     plt.subplot(2, 1, 2)
     for i in range(6):
         idx = 5 + 2*i + 1 # Index of x2 for system i
-        plt.plot(t, y[idx], label=f"Linear {i+1}")
+        plt.plot(t, y[idx], label=f"Linear {i+1}", color=colors_linear[i])
     plt.title("Second State (x2) of Linear Systems")
     plt.ylabel("x2")
     plt.xlabel("Time")
     plt.grid(True)
     
     plt.tight_layout()
-    plt.savefig('linear_systems_states.png')
-    print("Graphs saved to rossler_states.png and linear_systems_states.png")
+    plt.savefig('py_linear_systems_states.png')
+    print("Graphs saved to py_rossler_states.png and py_linear_systems_states.png")
 
 if __name__ == "__main__":
     run_simulation()
